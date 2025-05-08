@@ -1,0 +1,87 @@
+header{
+    background-color:   rgb(167, 167, 167);
+}
+main{
+    background-color:   rgb(167, 167, 167);
+    margin-top: -22px;
+}
+footer{
+    background-color:   rgb(167, 167, 167);
+}
+aside{
+    grid-area: lateral;
+    border-radius: 5px;
+    background-color: rgb(9, 9, 29);
+    color: aliceblue;
+}
+.menu{
+    font-size: 20px;
+    font-weight: 700;
+}
+.nav_mobile ul{
+    list-style: none;
+    border: rgb(255, 0, 0) solid 2px;
+    position: absolute;
+    top: 50px;
+    width: 85%;
+    background-color: rgb(255, 115, 0);
+    border-radius: 12px;
+
+}
+/* arrumar a imagem do menu */
+.nav_mobile img{
+    width: 40px;
+    border: rgb(0, 0, 0) solid 2px;
+    background-color: rgb(218, 218, 218);
+}
+
+.nav_mobile input[type="checkbox"]{
+     display: none;
+}
+/* deixar o menu mais bonito */
+.nav_mobile nav{
+    border: rgb(51, 51, 51) solid;
+    width: 350px;
+    height: 177vh;
+    position: absolute;
+    left: -390px;
+    transition: all 0.3s;
+    background-color: rgb(167, 167, 167);
+}
+/* deixar o menu mais bonito */
+.nav_mobile a{
+    border: rgb(255, 115, 0) solid;
+    display: block;
+    padding: 10px 5px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    background-color: rgb(224, 224, 224);
+}
+
+.nav_mobile label{
+    position: absolute;
+    z-index: 1;
+}
+.nav_mobile input[type="checkbox"]:checked ~ nav{
+    transform: translateX(350px);
+}
+.logo{
+    width: 248px;
+    right: 248px;
+    position: relative;
+    left: 42%;
+}
+.minidir{
+    width: 200px;
+    left: 58%;
+    position: relative;
+}
+.miniesq{
+    width: 200px;
+    right: 125px;
+    position: relative;
+}
+.loja{
+    width: 200px;
+}
