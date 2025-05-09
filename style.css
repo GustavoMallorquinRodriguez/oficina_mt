@@ -1,9 +1,9 @@
 header{
     background-color:   rgb(167, 167, 167);
+    margin: -20px;
 }
 main{
     background-color:   rgb(167, 167, 167);
-    margin-top: -22px;
 }
 footer{
     background-color:   rgb(167, 167, 167);
@@ -11,8 +11,8 @@ footer{
 aside{
     grid-area: lateral;
     border-radius: 5px;
-    background-color: rgb(9, 9, 29);
-    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+    color: rgb(167, 167, 167);
 }
 .menu{
     font-size: 20px;
@@ -20,11 +20,11 @@ aside{
 }
 .nav_mobile ul{
     list-style: none;
-    border: rgb(255, 0, 0) solid 2px;
+    border: rgb(74, 74, 74) solid 2px;
     position: absolute;
     top: 50px;
     width: 85%;
-    background-color: rgb(255, 115, 0);
+    background-color: rgb(74, 74, 74);
     border-radius: 12px;
 
 }
@@ -40,23 +40,23 @@ aside{
 }
 /* deixar o menu mais bonito */
 .nav_mobile nav{
-    border: rgb(51, 51, 51) solid;
+    border: rgb(0, 0, 0) solid;
     width: 350px;
     height: 177vh;
     position: absolute;
     left: -390px;
     transition: all 0.3s;
-    background-color: rgb(167, 167, 167);
+    background-color: rgb(74, 74, 74);
 }
 /* deixar o menu mais bonito */
 .nav_mobile a{
-    border: rgb(255, 115, 0) solid;
+    border: rgb(74, 74, 74) solid;
     display: block;
     padding: 10px 5px;
     text-decoration: none;
     color: rgb(0, 0, 0);
     border-radius: 20px;
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
 }
 
 .nav_mobile label{
@@ -79,9 +79,26 @@ aside{
 }
 .miniesq{
     width: 200px;
-    right: 125px;
+    right: 210px;
     position: relative;
 }
 .loja{
     width: 200px;
+}
+
+.card{
+    border-radius: 10px;
+    width: 1250px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    background-color: rgb(191, 191, 201);
+    
+}
+.moto{
+    width: 100px;
+    height: 160px;
 }
