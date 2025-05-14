@@ -7,17 +7,38 @@
     <link rel="stylesheet" href="cliente.css">
 </head>
 <body>
-    <header>
-        <img class="logo" src="imagens/an_motos.png" alt="logotipo">
-        <input type="text" placeholder="Nome" id="nome"> <br>
-        <input type="date" placeholder="data de nascimento" id="nascimento"> <br>
-        <input type="number" placeholder="Telefone" id="numero"> <br>
-        <input type="number" placeholder="CPF" id="cpf"> <br>
-        <input type="number" placeholder="CEP" id="cep"> <br> 
-        <input type="text" placeholder="Placa da Moto" id="placa da moto"> <br> 
-        <input type="text" placeholder="Modelo da moto" id="modelo da moto">
- 
-    </header>
+    <div class="header">
+        <img src="imagens/ccm.png" alt="Colégio Cívico-Militar do Paraná" class="logo">
+        <img src="imagens/an_motos.png" alt="RN Motos" class="logo">
+        <img src="imagens/parana.png" alt="Governo do Estado do Paraná" class="logo">
+    </div>
     
+    <div class="container">
+        <div class="form-title">Cadastre cliente</div>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nome" required>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" placeholder="Data de nascimento" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" placeholder="Telefone" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="CPF" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="CEP" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Placa da moto" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Modelo da moto" required>
+            </div>
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
