@@ -3,19 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moto</title>
+    <title>Cadastro Moto</title>
     <link rel="stylesheet" href="moto.css">
 </head>
 <body>
-    <header>
-        <img class="logo" src="imagens/an_motos.png" alt="logotipo">
-        <form>
-            <input type="text" placeholder="e-mail" id="email"> <br>
-            <input type="password" placeholder="password" id="senha">
-            <input type="password" placeholder="password" id="senha">
-            <input type="password" placeholder="password" id="senha">
-        </form>
+    <div class="header">
+        <div class="logo-container">
+            <img src="/api/placeholder/150/150" alt="Logo da Polícia Militar do Paraná" class="logo">
+            
+            <div class="center-logo">
+                <img src="imagens/an_motos.png" alt="Logo AN Motos" class="motorcycle-logo">
+                <div class="subtitle">Cadastre moto do cliente</div>
+            </div>
+            
+            <img src="/api/placeholder/150/150" alt="Logo do Governo do Paraná" class="logo">
+        </div>
+    </div>
+    
+    <div class="form-container">
+        <div class="form-group">
+            <input type="text" placeholder="Proprietário da moto">
+        </div>
         
-    </header>
+        <div class="form-group">
+            <input type="text" placeholder="Modelo da moto">
+        </div>
+        
+        <div class="form-group">
+            <input type="text" placeholder="Placa da moto">
+        </div>
+        
+        <div class="form-group">
+            <input type="text" placeholder="Ano da moto">
+        </div>
+        
+        <div class="form-group">
+            <input type="text" placeholder="Kilometragem">
+        </div>
+        
+        <button type="button">Cadastrar</button>
+    </div>
 </body>
 </html>
