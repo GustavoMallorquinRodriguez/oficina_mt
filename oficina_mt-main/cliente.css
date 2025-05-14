@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(134, 134, 134);
+}
+.logo{
+    width: 248px;
+    right: 248px;
+    position: relative;
+    left: 8px;
+}
