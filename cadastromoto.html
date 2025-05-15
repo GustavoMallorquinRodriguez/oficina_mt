@@ -16,13 +16,15 @@
                
             </div>
             
-            <img src="imagens/parana.png" alt="Logo do Governo do Paraná" class="logo">
+            <img src="imagens/agavi.png" alt="Logo do Governo do Paraná" class="logo">
         </div>
     </div>
     
     <div class="form-container"> 
         <div class="subtitle">Cadastre moto do cliente</div><br>
-        <div class="form-group">
+        
+        <form id="cadastro-form">
+            <div class="form-group">
             <input type="text" placeholder="Proprietário da moto">
         </div>
         
@@ -42,7 +44,15 @@
             <input type="text" placeholder="Kilometragem">
         </div>
         
-        <button type="button">Cadastrar</button>
-    </div>
+        <button type="submit" class="submit">Cadastrar</button>
+        </div>
+    </form>
+    <script>
+        document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Formulário enviado com sucesso!');
+        });
+    </script>
+        
 </body>
 </html>
