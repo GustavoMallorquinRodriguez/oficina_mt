@@ -37,6 +37,7 @@ body {
     margin-bottom: 10px;
 }
 
+
 .logo {
     background-color: white;
     padding: 10px;
@@ -107,7 +108,7 @@ body {
     }
 }
 .btn-cadastro {
-    background-color: #000;
+    background-color: #000000;
     color: white;
     padding: 8px 15px;
     border-radius: 20px;
@@ -116,16 +117,20 @@ body {
     font-size: 14px;
     font-weight: bold;
     transition: all 0.3s ease;
-
+    
 }
 
 .btn-cadastro:hover {
-    background-color: white;
+    background-color: #FF6600;
     color: #FF6600;
-
+    
 }
 .btn-cadastro {
     font-size: 12px;
     padding: 6px 10px;
 
+}
+.header a{
+    text-decoration: none;
+    color: #ffffff;
 }
