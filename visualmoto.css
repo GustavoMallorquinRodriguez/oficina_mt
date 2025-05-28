@@ -130,9 +130,9 @@ body {
 }
 
 .form-group.highlighted input {
-    border-color: #8b5cf6;
+    border-color: #bbb;
     border-width: 3px;
-    box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 1px  #ffffff;
 }
 
 .no-label {
@@ -173,4 +173,27 @@ body {
     .container {
         padding: 10px;
     }
+}
+.btn-cadastro{
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    padding: 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 110px;
+    margin-left: 47%;
+    transition: 1.0s;
+   
+}
+.voltar{
+    text-decoration: none;
+    color: #000000;
+}
+.btn-cadastro:hover {
+    background-color: #FF6600;
+    color: #FF6600;
+    
 }
