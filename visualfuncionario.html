@@ -1,138 +1,127 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar Funcionario</title>
+    <title>RV Motos - Agendamento</title>
     <link rel="stylesheet" href="visualfuncionario.css">
 </head>
 <body>
     <header class="header">
         <div class="logo-left">
-            <img src="imagens/ccm.png" alt="Colégio Militar Logo">
+            <img src="imagens/ccm.png" alt="Logo Poveiro - Secretaria de Turismo">
         </div>
         
         <div class="logo-center">
-            <img src="imagens/an_motos.png" alt="RN Motos Logo">
+            <img src="imagens/an_motos.png" alt="Logo RV Motos">
+            <button class="visualizar-btn">Visualizar Agenda</button>
         </div>
         
         <div class="logo-right">
-            <img src="imagens/agavi.png" alt="AGAVI Logo">
+            <img src="imagens/agavi.png" alt="Logo AGAVL">
         </div>
     </header>
 
-    <div class="subtitle">
-        Visualizar Agenda    
-    </div>
-
     <div class="container">
-        <div class="form-section">
-            <div class="section-title">
-                Dados da Agenda
-            </div>
-            
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome">
+        <div class="form-header">
+            Dados da Agenda
+        </div>
+        
+        <div class="form-content">
+            <form id="agendaForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nomeCliente">Nome Cliente:</label>
+                        <input type="text" id="nomeCliente" name="nomeCliente" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modeloMoto">Modelo da moto:</label>
+                        <input type="text" id="modeloMoto" name="modeloMoto" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="placaMoto">Placa da moto:</label>
+                        <input type="text" id="placaMoto" name="placaMoto" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dataEntrada">Data de Entrada:</label>
+                        <input type="date" id="dataEntrada" name="dataEntrada" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dataSaida">Data de Saída:</label>
+                        <input type="date" id="dataSaida" name="dataSaida" required>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="numero">Número:</label>
-                    <input type="text" id="numero" name="numero">
+                <div class="textarea-section">
+                    <label for="observacoes">Observações / Serviços:</label>
+                    <textarea id="observacoes" name="observacoes" placeholder="Descreva os serviços a serem realizados, observações importantes, peças necessárias, etc."></textarea>
                 </div>
                 
-                <div class="form-group">
-                    <label for="cep">CEP:</label>
-                    <input type="text" id="cep" name="cep">
+                <div class="btn-container">
+                    <button type="submit" class="submit-btn">Agendar Serviço</button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="codigo">Data:</label>
-                    <input type="date" id="codigo" name="codigo">
-                </div>
-
-                <!-- Linhas adicionais para corresponder à imagem -->
-                <div class="form-group">
-                    <input type="text" name="campo5">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo6">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo7">
-                </div>
-                <div class="form-group">
-                    <input type="date" name="campo8">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo9">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo10">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo11">
-                </div>
-                <div class="form-group">
-                    <input type="date" name="campo12">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo13">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo14">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo15">
-                </div>
-                <div class="form-group">
-                    <input type="date" name="campo16">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo17">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo18">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo19">
-                </div>
-                <div class="form-group">
-                    <input type="date" name="campo20">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo21">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo22">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo23">
-                </div>
-                <div class="form-group">
-                    <input type="date" name="campo24">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo25">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo26">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo27">
-                </div>
-                <div class="form-group">
-                    <input type="date" name="campo28">
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="btn-cadastro"><a class="voltar" href="index.html">Voltar</a></div>
+
+    <script>
+        document.getElementById('agendaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coletar dados do formulário
+            const formData = {
+                nomeCliente: document.getElementById('nomeCliente').value,
+                modeloMoto: document.getElementById('modeloMoto').value,
+                placaMoto: document.getElementById('placaMoto').value,
+                dataEntrada: document.getElementById('dataEntrada').value,
+                dataSaida: document.getElementById('dataSaida').value,
+                observacoes: document.getElementById('observacoes').value
+            };
+            
+            // Simulação de envio
+            alert('Agendamento realizado com sucesso!\n\nCliente: ' + formData.nomeCliente + '\nMoto: ' + formData.modeloMoto + '\nPlaca: ' + formData.placaMoto);
+            
+            // Limpar formulário
+            this.reset();
+        });
+
+        // Função para o botão "Visualizar Agenda"
+        document.querySelector('.visualizar-btn').addEventListener('click', function() {
+            alert('Funcionalidade de visualização da agenda será implementada em breve!');
+        });
+
+        // Validação de placa brasileira
+        document.getElementById('placaMoto').addEventListener('input', function(e) {
+            let value = e.target.value.toUpperCase();
+            value = value.replace(/[^A-Z0-9]/g, '');
+            
+            if (value.length > 7) {
+                value = value.substring(0, 7);
+            }
+            
+            if (value.length > 3) {
+                value = value.substring(0, 3) + '-' + value.substring(3);
+            }
+            
+            e.target.value = value;
+        });
+
+        // Validação de datas
+        document.getElementById('dataEntrada').addEventListener('change', function() {
+            const dataEntrada = new Date(this.value);
+            const dataSaida = document.getElementById('dataSaida');
+            
+            // Define data mínima de saída como um dia após a entrada
+            const minDataSaida = new Date(dataEntrada);
+            minDataSaida.setDate(minDataSaida.getDate() + 1);
+            
+            dataSaida.min = minDataSaida.toISOString().split('T')[0];
+        });
+    </script>
 </body>
 </html>
