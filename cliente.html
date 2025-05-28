@@ -7,45 +7,180 @@
     <link rel="stylesheet" href="cliente.css">
 </head>
 <body>
-    <div class="header">
-        <img src="imagens/ccm.png" alt="Colégio Cívico-Militar do Paraná" class="logo">
-        <img src="imagens/an_motos.png" alt="RN Motos" class="logo">
-        <img src="imagens/agavi.png" alt="Governo do Estado do Paraná" class="logo">
-    </div>
-    
+    <header class="header">
+        <div class="logo">
+            <img src="imagens/ccm.png" alt="Colégio CCMH" />
+        </div>
+
+        <div class="main-logo motorcycle-bg">
+            <img src="imagens/an_motos.png" alt="RW Motos" />
+        </div>
+
+        <div class="agave-logo">
+            <img src="imagens/agavi.png" alt="Agave" />
+        </div>
+    </header>
+
     <div class="container">
-        <div class="form-title">Cadastre cliente</div>
-        <form id="cadastro-form">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nome" required>
-            </div>
-            <div class="form-group">
-                <input type="date" class="form-control" placeholder="Data de nascimento" required>
-            </div>
-            <div class="form-group">
-                <input type="tel" class="form-control" placeholder="Telefone" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="CPF" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="CEP" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Placa da moto" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Modelo da moto" required>
-            </div>
-            <button type="submit" class="submit">Cadastrar</button>
-        </form>
+        <div class="form-container">
+            <h2 class="form-title">Cadastrar Cliente</h2>
+            
+            <form id="clienteForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome do Cliente" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="CPF" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group quarter">
+                        <input type="text" placeholder="CEP" required>
+                    </div>
+                    <div class="form-group quarter">
+                        <input type="text" placeholder="Bairro" required>
+                    </div>
+                    <div class="form-group quarter">
+                        <input type="text" placeholder="Complemento">
+                    </div>
+                    <div class="form-group quarter">
+                        <select required>
+                            <option value="">Sexo</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome da Rua" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Nº Casa" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="E-mail" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Cadastrar</button>
+            </form>
+        </div>
     </div>
-    <div class="btn-cadastro"><a class="voltar" href="index.html">Voltar</a></div>
+
     <script>
-        document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+        document.getElementById('clienteForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Formulário enviado com sucesso!');
+            
+            // Simulação de cadastro
+            const formData = new FormData(this);
+            
+            // Animação de sucesso
+            const btn = document.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Cadastrando...';
+            btn.style.backgroundColor = '#28a745';
+            
+            setTimeout(() => {
+                btn.textContent = 'Cliente Cadastrado!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.backgroundColor = '';
+                    this.reset();
+                }, 2000);
+            }, 1000);
         });
+
+        // Máscara para CPF
+        document.querySelector('input[placeholder="CPF"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Máscara para telefone
+        document.querySelector('input[placeholder="Telefone"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d)/, '($1) $2');
+            value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Máscara para CEP e integração com ViaCEP
+        const cepInput = document.querySelector('input[placeholder="CEP"]');
+        const bairroInput = document.querySelector('input[placeholder="Bairro"]');
+        const ruaInput = document.querySelector('input[placeholder="Nome da Rua"]');
+        
+        cepInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            e.target.value = value;
+            
+            // Buscar CEP quando tiver 8 dígitos
+            if (value.replace(/\D/g, '').length === 8) {
+                buscarCEP(value.replace(/\D/g, ''));
+            }
+        });
+        
+        async function buscarCEP(cep) {
+            try {
+                // Mostrar loading
+                bairroInput.placeholder = 'Buscando...';
+                ruaInput.placeholder = 'Buscando...';
+                bairroInput.disabled = true;
+                ruaInput.disabled = true;
+                
+                const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                const data = await response.json();
+                
+                if (data.erro) {
+                    throw new Error('CEP não encontrado');
+                }
+                
+                // Preencher campos automaticamente
+                bairroInput.value = data.bairro || '';
+                ruaInput.value = data.logradouro || '';
+                
+                // Adicionar cidade e estado como dados extras (opcional)
+                if (data.localidade && data.uf) {
+                    // Você pode adicionar campos ocultos ou mostrar em algum lugar
+                    console.log(`Cidade: ${data.localidade} - ${data.uf}`);
+                }
+                
+                // Restaurar placeholders
+                bairroInput.placeholder = 'Bairro';
+                ruaInput.placeholder = 'Nome da Rua';
+                
+            } catch (error) {
+                console.error('Erro ao buscar CEP:', error);
+                
+                // Em caso de erro, limpar campos e mostrar mensagem
+                bairroInput.value = '';
+                ruaInput.value = '';
+                bairroInput.placeholder = 'CEP inválido - Digite manualmente';
+                ruaInput.placeholder = 'CEP inválido - Digite manualmente';
+                
+                // Restaurar placeholders após 3 segundos
+                setTimeout(() => {
+                    bairroInput.placeholder = 'Bairro';
+                    ruaInput.placeholder = 'Nome da Rua';
+                }, 3000);
+            } finally {
+                // Reabilitar campos
+                bairroInput.disabled = false;
+                ruaInput.disabled = false;
+            }
+        }
     </script>
-</body>
+</body>>
 </html>
