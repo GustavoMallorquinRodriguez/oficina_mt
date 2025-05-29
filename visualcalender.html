@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="visualcalender.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <!-- Substitua o src pela URL da imagem do Club Militar -->
+            <img src="imagens/ccm.png" alt="Club Militar">
+            <div class="logo-text" style="display: none;">
+                CLUB<br>MILITAR<br>CC FG
+            </div>
+        </div>
+        
+        <div class="center-logo">
+            <!-- Substitua o src pela URL da imagem RN Motos -->
+            <img src="imagens/an_motos.png" alt="RN Motos">
+            <div class="center-logo-fallback" style="display: none;">
+                <h1>RN</h1>
+                <span>MOTOS</span>
+            </div>
+        </div>
+        
+        <div class="agave-logo">
+            <!-- Substitua o src pela URL da imagem Agave -->
+            <img src="imagens/agavi.png" alt="Agave" >
+            <div class="agave-logo-text">
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h2 class="title">Visualizar agenda</h2>
+        
+        <div class="calendar-container">
+            <div class="year-title">2025</div>
+            
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Calendário será gerado via JavaScript -->
+            </div>
+        </div>
+    </main>
+     <script>
+        const months = [
+            'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL',
+            'MAY', 'JUNE', 'JULY', 'AUGUST',
+            'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'
+        ];
+
+        const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
+        function getDaysInMonth(month, year) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        function getFirstDayOfMonth(month, year) {
+            return new Date(year, month, 1).getDay();
+        }
+
+        function createCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            const currentDate = new Date();
+            const currentYear = 2025;
+            const currentMonth = currentDate.getMonth();
+            const currentDay = currentDate.getDate();
+
+            for (let month = 0; month < 12; month++) {
+                const monthDiv = document.createElement('div');
+                monthDiv.className = 'month';
+
+                const monthName = document.createElement('div');
+                monthName.className = 'month-name';
+                monthName.textContent = months[month];
+                monthDiv.appendChild(monthName);
+
+                const daysGrid = document.createElement('div');
+                daysGrid.className = 'days-grid';
+
+                // Adicionar cabeçalhos dos dias da semana
+                daysOfWeek.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'day-header';
+                    dayHeader.textContent = day;
+                    daysGrid.appendChild(dayHeader);
+                });
+
+                const daysInMonth = getDaysInMonth(month, currentYear);
+                const firstDay = getFirstDayOfMonth(month, currentYear);
+
+                // Dias do mês anterior (cinza)
+                const prevMonth = month === 0 ? 11 : month - 1;
+                const prevYear = month === 0 ? currentYear - 1 : currentYear;
+                const daysInPrevMonth = getDaysInMonth(prevMonth, prevYear);
+
+                for (let i = firstDay - 1; i >= 0; i--) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = 'day other-month';
+                    dayDiv.textContent = daysInPrevMonth - i;
+                    daysGrid.appendChild(dayDiv);
+                }
+
+                // Dias do mês atual
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = 'day';
+                    
+                    const dayOfWeek = (firstDay + day - 1) % 7;
+                    if (dayOfWeek === 0 || dayOfWeek === 6) {
+                        dayDiv.classList.add('weekend');
+                    }
+
+                    // Destacar dia atual (se estivermos em 2025)
+                    if (currentYear === 2025 && month === currentMonth && day === currentDay) {
+                        dayDiv.classList.add('today');
+                    }
+
+                    dayDiv.textContent = day;
+                    daysGrid.appendChild(dayDiv);
+                }
+
+                // Dias do próximo mês para completar a grade
+                const totalCells = daysGrid.children.length - 7; // -7 para os cabeçalhos
+                const remainingCells = 35 - totalCells; // 5 semanas * 7 dias = 35
+
+                for (let day = 1; day <= remainingCells; day++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = 'day other-month';
+                    dayDiv.textContent = day;
+                    daysGrid.appendChild(dayDiv);
+                }
+
+                monthDiv.appendChild(daysGrid);
+                calendarGrid.appendChild(monthDiv);
+            }
+        }
+
+        // Inicializar calendário quando a página carregar
+        document.addEventListener('DOMContentLoaded', createCalendar);
+    </script>
+    
+</body>
+</html>
