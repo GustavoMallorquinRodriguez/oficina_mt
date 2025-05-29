@@ -7,132 +7,239 @@
     <link rel="stylesheet" href="visualcliente.css">
 </head>
 <body>
-    <header class="header">
-        <div class="logo-left">
-            <img src="imagens/ccm.png" alt="Colégio Militar Logo">
+    <!-- Header com logos -->
+    <div class="header">
+        <div class="logo">
+            <img src="imagens/ccm.png" alt="Colégio Militar do Rio">
         </div>
         
-        <div class="logo-center">
-            <img src="imagens/an_motos.png" alt="RN Motos Logo">
+        <div class="logo">
+            <img src="imagens/an_motos.png" alt="RV Motos">
         </div>
         
-        <div class="logo-right">
-            <img src="imagens/agavi.png" alt="AGAVI Logo">
+        <div class="logo">
+            <img src="imagens/agavi.png" alt="Agave">
         </div>
-    </header>
-
-    <div class="subtitle">
-        Visualizar Cliente
     </div>
 
+    <!-- Container principal -->
     <div class="container">
-        <div class="form-section">
-            <div class="section-title">
-                Dados do usuário
-            </div>
+        <div class="client-section">
+            <h2 class="section-title">Visualizar Cliente</h2>
             
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome">
-                </div>
-                
-                <div class="form-group">
-                    <label for="numero">Número:</label>
-                    <input type="text" id="numero" name="numero">
-                </div>
-                
-                <div class="form-group">
-                    <label for="cep">CEP:</label>
-                    <input type="text" id="cep" name="cep">
-                </div>
-                
-                <div class="form-group">
-                    <label for="modelo">Modelo da Moto:</label>
-                    <input type="text" id="modelo" name="modelo">
-                </div>
+            <div class="table-container">
+                <table class="client-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome do Cliente</th>
+                            <th>Telefone</th>
+                            <th>CPF</th>
+                            <th>Nome da Rua</th>
+                            <th>Nº Casa</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clientTableBody">
+                        <tr data-id="1">
+                            <td>001</td>
+                            <td>João Silva Santos</td>
+                            <td>(11) 99999-9999</td>
+                            <td>123.456.789-00</td>
+                            <td>Rua das Flores</td>
+                            <td>123</td>
+                            <td>
+                                <button class="edit-btn" onclick="editClient(this)">✏️ Editar</button>
+                                <button class="delete-btn" onclick="deleteClient(this)">🗑️ Excluir</button>
+                            </td>
+                        </tr>
+                        <tr data-id="2">
+                            <td>002</td>
+                            <td>Maria Oliveira Costa</td>
+                            <td>(11) 88888-8888</td>
+                            <td>987.654.321-00</td>
+                            <td>Avenida Brasil</td>
+                            <td>456</td>
+                            <td>
+                                <button class="edit-btn" onclick="editClient(this)">✏️ Editar</button>
+                                <button class="delete-btn" onclick="deleteClient(this)">🗑️ Excluir</button>
+                            </td>
+                        </tr>
+                        <tr data-id="3">
+                            <td>003</td>
+                            <td>Carlos Eduardo Lima</td>
+                            <td>(11) 77777-7777</td>
+                            <td>456.789.123-00</td>
+                            <td>Rua do Comércio</td>
+                            <td>789</td>
+                            <td>
+                                <button class="edit-btn" onclick="editClient(this)">✏️ Editar</button>
+                                <button class="delete-btn" onclick="deleteClient(this)">🗑️ Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-                <!-- Linhas adicionais para corresponder à imagem -->
-                <div class="form-group">
-                    <input type="text" name="campo5">
+    <!-- Modal para editar cliente -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Cliente</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <input type="text" class="form-input" placeholder="ID" id="editClientId" readonly>
+                    <input type="text" class="form-input" placeholder="Nome do Cliente" id="editClientName">
+                    <input type="text" class="form-input" placeholder="Telefone" id="editClientPhone">
+                    <input type="text" class="form-input" placeholder="CPF" id="editClientCpf">
+                    <input type="text" class="form-input" placeholder="Nome da Rua" id="editClientStreet">
+                    <input type="text" class="form-input" placeholder="Nº Casa" id="editClientNumber">
                 </div>
-                <div class="form-group">
-                    <input type="text" name="campo6">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo7">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo8">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo9">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo10">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo11">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo12">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo13">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo14">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo15">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo16">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo17">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo18">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo19">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo20">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo21">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo22">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo23">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo24">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="campo25">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo26">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo27">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="campo28">
+                <div class="modal-buttons">
+                    <button class="save-btn" onclick="saveClient()">💾 Salvar</button>
+                    <button class="cancel-btn" onclick="closeModal()">❌ Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        let currentEditingRow = null;
+
+        function editClient(button) {
+            const row = button.closest('tr');
+            currentEditingRow = row;
+            
+            const cells = row.querySelectorAll('td');
+            document.getElementById('editClientId').value = cells[0].textContent;
+            document.getElementById('editClientName').value = cells[1].textContent;
+            document.getElementById('editClientPhone').value = cells[2].textContent;
+            document.getElementById('editClientCpf').value = cells[3].textContent;
+            document.getElementById('editClientStreet').value = cells[4].textContent;
+            document.getElementById('editClientNumber').value = cells[5].textContent;
+            
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        function deleteClient(button) {
+            if (confirm('Tem certeza que deseja excluir este cliente?')) {
+                const row = button.closest('tr');
+                
+                // Animação de saída
+                row.style.transition = 'all 0.5s ease';
+                row.style.transform = 'translateX(-100%)';
+                row.style.opacity = '0';
+                
+                setTimeout(() => {
+                    row.remove();
+                }, 500);
+                
+                // Mostrar mensagem de sucesso
+                showMessage('Cliente excluído com sucesso!', 'success');
+            }
+        }
+
+        function saveClient() {
+            const id = document.getElementById('editClientId').value;
+            const name = document.getElementById('editClientName').value;
+            const phone = document.getElementById('editClientPhone').value;
+            const cpf = document.getElementById('editClientCpf').value;
+            const street = document.getElementById('editClientStreet').value;
+            const number = document.getElementById('editClientNumber').value;
+
+            if (name && phone && cpf && street && number) {
+                const cells = currentEditingRow.querySelectorAll('td');
+                cells[0].textContent = id;
+                cells[1].textContent = name;
+                cells[2].textContent = phone;
+                cells[3].textContent = cpf;
+                cells[4].textContent = street;
+                cells[5].textContent = number;
+
+                // Animação de sucesso
+                currentEditingRow.style.backgroundColor = '#d4edda';
+                setTimeout(() => {
+                    currentEditingRow.style.backgroundColor = '';
+                }, 2000);
+
+                closeModal();
+                showMessage('Cliente atualizado com sucesso!', 'success');
+            } else {
+                showMessage('Por favor, preencha todos os campos!', 'error');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+            currentEditingRow = null;
+        }
+
+        function showMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                border-radius: 8px;
+                color: white;
+                font-weight: bold;
+                z-index: 10000;
+                animation: slideInRight 0.5s ease;
+                ${type === 'success' ? 'background: linear-gradient(135deg, #27ae60, #2ecc71);' : 'background: linear-gradient(135deg, #e74c3c, #c0392b);'}
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOutRight 0.5s ease';
+                setTimeout(() => {
+                    document.body.removeChild(messageDiv);
+                }, 500);
+            }, 3000);
+        }
+
+        // Fechar modal clicando fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Animações CSS adicionais
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Efeito de entrada suave para as linhas da tabela
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.client-table tbody tr');
+            rows.forEach((row, index) => {
+                row.style.opacity = '0';
+                row.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    row.style.transition = 'all 0.5s ease';
+                    row.style.opacity = '1';
+                    row.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
     <div class="btn-cadastro"><a class="voltar" href="index.html">Voltar</a></div>
 </body>
 </html>

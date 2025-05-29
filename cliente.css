@@ -188,3 +188,26 @@ input:disabled {
     top: -10px;
     z-index: 0;
 }
+.btn-cadastro{
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    padding: 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 110px;
+    margin-left: 47%;
+    transition: 1.0s;
+   
+}
+.voltar{
+    text-decoration: none;
+    color: #000000;
+}
+.btn-cadastro:hover {
+    background-color: #f57c2c;
+    color: #fb802d;
+    
+}
