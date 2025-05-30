@@ -21,25 +21,108 @@
                 <img class="agavi" src="imagens/agavi.png" alt="">
             </div>
     </header>
-
-     <div class="box-card">
-        <div class="card">
-            <a class="denuncie" href="denunciar.html">SERVIÇOS</a>
-            <img src="imagens/an_motos.png" alt="">
-        </div> 
-    </div>        
-
-    <section id="quem-somos">
-        <div class="main">
-            <h1>QUEM SOMOS?</h1>
-            <div class="wrapper">
-                <img src="imagens/an_motos.png" alt="logotipo" class="image">
-                <div class="text">
-                    <p>Na AN Motos, somos apaixonados por motocicletas e dedicados a oferecer o melhor atendimento e serviços para garantir que sua moto esteja sempre em perfeitas condições. Com anos de experiência no mercado, nossa oficina mecânica é especializada em manutenção, reparos e personalizações de motos de diversas marcas e modelos. </p>
+   <main class="main-content">
+        <h1 class="page-title">cadastrar serviço</h1>
+        
+        <div class="form-container">
+            <form id="serviceForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="date" id="dataEntrada" placeholder="data de entrada" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="tipoServico" required>
+                            <option value="">tipo de serviço</option>
+                            <option value="revisao">Revisão</option>
+                            <option value="manutencao">Manutenção</option>
+                            <option value="reparo">Reparo</option>
+                            <option value="troca-oleo">Troca de Óleo</option>
+                            <option value="freios">Freios</option>
+                            <option value="suspensao">Suspensão</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="date" id="dataSaida" placeholder="data de saída">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="mecanicoServico" placeholder="mecânico do serviço" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="number" id="orcamento" placeholder="Orçamento (R$)" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="idMoto" placeholder="ID moto" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <textarea id="observacao" placeholder="observação" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Cadastrar</button>
+            </form>
         </div>
-    </section>
+    </main>
+
+    <script>
+        document.getElementById('serviceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                dataEntrada: document.getElementById('dataEntrada').value,
+                tipoServico: document.getElementById('tipoServico').value,
+                dataSaida: document.getElementById('dataSaida').value,
+                mecanicoServico: document.getElementById('mecanicoServico').value,
+                orcamento: document.getElementById('orcamento').value,
+                idMoto: document.getElementById('idMoto').value,
+                observacao: document.getElementById('observacao').value
+            };
+
+            // Validação básica
+            if (!formData.dataEntrada || !formData.tipoServico || !formData.mecanicoServico || !formData.idMoto) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+
+            // Simulação de envio dos dados
+            console.log('Dados do serviço:', formData);
+            alert('Serviço cadastrado com sucesso!');
+            
+            // Limpar formulário após o envio
+            this.reset();
+            
+            // Definir data atual novamente após reset
+            document.getElementById('dataEntrada').valueAsDate = new Date();
+        });
+
+        // Adicionar funcionalidade aos ícones da sidebar
+        document.querySelectorAll('.sidebar-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                console.log('Ícone clicado');
+            });
+        });
+
+        // Definir data atual como padrão para data de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('dataEntrada').valueAsDate = new Date();
+        });
+
+        // Funcionalidade do menu lateral
+        document.querySelector('.expandir').addEventListener('click', function() {
+            const menu = document.querySelector('nav.menu-lateral');
+            menu.style.width = menu.style.width === '300px' ? '80px' : '300px';
+        });
+    </script>
+    <div class="btn-cadastro"><a class="voltar" href="visualservico.html">Visualizar Serviços</a></div>
+
 
     <nav class="menu-lateral">
 
