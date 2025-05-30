@@ -30,7 +30,7 @@ body {
 
 /* Header Styles */
 .header {
-    background: rgb(255, 136, 0);
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;

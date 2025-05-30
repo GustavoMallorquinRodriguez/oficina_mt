@@ -70,7 +70,7 @@ ul li.item-menu a .icon i{
 
 
 header{
-    background-color: #ff6600;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
     height: 130px;
     display: flex;
 
@@ -233,7 +233,7 @@ header div img{
             font-weight: bold;
             text-align: center;
             width: 150px;
-            margin-left: 47%;
+            margin-left: 905px;
             transition: 1.0s;
             margin-top: -150px;
             

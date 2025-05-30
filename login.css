@@ -10,7 +10,7 @@ body {
 }
 
 .header {
-    background-color: #ff6600;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
     padding: 20px 0;
     display: flex;
     justify-content: space-around;
