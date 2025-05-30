@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RV Motos - Agendamento</title>
-    <link rel="stylesheet" href="visualfuncionario.css">
+    <link rel="stylesheet" href="agenda.css">
 </head>
 <body>
     <header class="header">
@@ -14,7 +14,7 @@
         
         <div class="logo-center">
             <img src="imagens/an_motos.png" alt="Logo RV Motos">
-            <button class="visualizar-btn">Visualizar Agenda</button>
+            <a class="visualizar-btn" href="#" onclick="abrirCalendario()">Visualizar Agenda</a>
         </div>
         
         <div class="logo-right">
@@ -25,6 +25,10 @@
     <div class="container">
         <div class="form-header">
             Dados da Agenda
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            Agendamento realizado com sucesso!
         </div>
         
         <div class="form-content">
@@ -70,6 +74,39 @@
     <div class="btn-cadastro"><a class="voltar" href="index.html">Voltar</a></div>
 
     <script>
+        // Sistema de armazenamento de agendamentos
+        class AgendaManager {
+            constructor() {
+                this.agendamentos = this.loadAgendamentos();
+            }
+
+            loadAgendamentos() {
+                // Como não podemos usar localStorage, vamos usar uma variável global
+                if (!window.agendamentosGlobais) {
+                    window.agendamentosGlobais = [];
+                }
+                return window.agendamentosGlobais;
+            }
+
+            saveAgendamento(agendamento) {
+                agendamento.id = Date.now().toString();
+                this.agendamentos.push(agendamento);
+                return agendamento.id;
+            }
+
+            getAgendamentos() {
+                return this.agendamentos;
+            }
+
+            getAgendamentosPorData(data) {
+                return this.agendamentos.filter(ag => 
+                    ag.dataEntrada <= data && ag.dataSaida >= data
+                );
+            }
+        }
+
+        const agendaManager = new AgendaManager();
+
         document.getElementById('agendaForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -80,19 +117,30 @@
                 placaMoto: document.getElementById('placaMoto').value,
                 dataEntrada: document.getElementById('dataEntrada').value,
                 dataSaida: document.getElementById('dataSaida').value,
-                observacoes: document.getElementById('observacoes').value
+                observacoes: document.getElementById('observacoes').value,
+                dataAgendamento: new Date().toISOString()
             };
             
-            // Simulação de envio
-            alert('Agendamento realizado com sucesso!\n\nCliente: ' + formData.nomeCliente + '\nMoto: ' + formData.modeloMoto + '\nPlaca: ' + formData.placaMoto);
+            // Salvar agendamento
+            const id = agendaManager.saveAgendamento(formData);
+            
+            // Mostrar mensagem de sucesso
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            successMessage.innerHTML = `
+                <strong>Agendamento #${id} realizado com sucesso!</strong><br>
+                Cliente: ${formData.nomeCliente}<br>
+                Moto: ${formData.modeloMoto} - ${formData.placaMoto}<br>
+                Período: ${formatDate(formData.dataEntrada)} até ${formatDate(formData.dataSaida)}
+            `;
             
             // Limpar formulário
             this.reset();
-        });
-
-        // Função para o botão "Visualizar Agenda"
-        document.querySelector('.visualizar-btn').addEventListener('click', function() {
-            alert('Funcionalidade de visualização da agenda será implementada em breve!');
+            
+            // Esconder mensagem após 5 segundos
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
         });
 
         // Validação de placa brasileira
@@ -122,6 +170,30 @@
             
             dataSaida.min = minDataSaida.toISOString().split('T')[0];
         });
+
+        // Definir data mínima como hoje
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('dataEntrada').min = today;
+        document.getElementById('dataSaida').min = today;
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR');
+        }
+
+        function abrirCalendario() {
+            // Abrir o calendário em uma nova janela ou redirecionar
+            window.open('visualcalender.html', '_blank');
+        }
+
+        // Disponibilizar agendamentos globalmente para o calendário
+        window.getAgendamentos = function() {
+            return agendaManager.getAgendamentos();
+        };
+
+        window.getAgendamentosPorData = function(data) {
+            return agendaManager.getAgendamentosPorData(data);
+        };
     </script>
 </body>
 </html>
