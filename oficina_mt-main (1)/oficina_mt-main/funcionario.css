@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    color: white;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.center-logo {
+    text-align: center;
+}
+
+.center-logo img {
+    width: 150px;
+    height: auto;
+}
+
+.center-logo p {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #b3b3b3;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px 2%;
+    }
+    
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    
+    .form-container {
+        width: 90%;
+    }
+}
+.btn-cadastro{
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    padding: 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 110px;
+    margin-left: 47%;
+    transition: 1.0s;
+   
+}
+.voltar{
+    text-decoration: none;
+    color: #000000;
+}
+.btn-cadastro:hover {
+    background-color: #FF6600;
+    color: #FF6600;
+    
+}
